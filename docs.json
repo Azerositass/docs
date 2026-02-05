@@ -71,7 +71,7 @@
       "light": "#FFFFFF",
       "dark": "#000000"
     },
-    "decoration": "gradient"
+    "decoration": "grid"
   },
   "styling": {
     "codeblocks": "dark"
