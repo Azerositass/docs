@@ -4,8 +4,8 @@
   "name": "Wearo Documentation",
   "colors": {
     "primary": "#2E6B42",
-    "light": "#4ADE80",
-    "dark": "#14532D"
+    "light": "#07C983",
+    "dark": "#15803D"
   },
   "favicon": "/images/FavIcon.svg",
   "navigation": {
@@ -68,8 +68,8 @@
   "description": "Add AI virtual try-on to your e-commerce store in 5 minutes",
   "background": {
     "color": {
-      "light": "#000000",
-      "dark": "#ffffff"
+      "light": "#FFFFFF",
+      "dark": "#000000"
     },
     "decoration": "gradient"
   },
