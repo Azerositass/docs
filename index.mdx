@@ -1,6 +1,7 @@
-# Wearo Developer Documentation
-
-> Add virtual try-on to your e-commerce store in 5 minutes.
+---
+title: "Overview"
+description: "Add AI virtual try-on to your e-commerce store in 5 minutes."
+---
 
 Wearo provides AI-powered virtual try-on technology that lets your customers see how clothes look on them before buying. This guide covers two integration methods:
 
@@ -67,15 +68,15 @@ Add the following script to your HTML, preferably before the closing `</body>` t
 
 ### Configuration Options
 
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `apiKey` | string | **Yes** | - | Your Wearo API key (starts with `tryonai_`) |
-| `productSelector` | string | No | `img[data-product-image], img.product-image, .product-image img, .product__image img, .product__media img` | CSS selector to find product images |
-| `triggerSelector` | string | No | - | Custom CSS selector for button container placement |
-| `triggerText` | string | No | Auto-detected | Button label text. Auto-detects browser language: "Try it on you" (EN) or "Essayer sur moi" (FR) |
-| `brandColor` | string | No | `#000000` | Your brand color in hex format (`#RRGGBB`) |
-| `productId` | string | No | - | Product identifier for analytics tracking |
-| `variantId` | string | No | - | Variant identifier (useful for Shopify integrations) |
+| Parameter         | Type   | Required | Default                                                                                                    | Description                                                                                      |
+| ----------------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `apiKey`          | string | **Yes**  | -                                                                                                          | Your Wearo API key (starts with `tryonai_`)                                                      |
+| `productSelector` | string | No       | `img[data-product-image], img.product-image, .product-image img, .product__image img, .product__media img` | CSS selector to find product images                                                              |
+| `triggerSelector` | string | No       | -                                                                                                          | Custom CSS selector for button container placement                                               |
+| `triggerText`     | string | No       | Auto-detected                                                                                              | Button label text. Auto-detects browser language: "Try it on you" (EN) or "Essayer sur moi" (FR) |
+| `brandColor`      | string | No       | `#000000`                                                                                                  | Your brand color in hex format (`#RRGGBB`)                                                       |
+| `productId`       | string | No       | -                                                                                                          | Product identifier for analytics tracking                                                        |
+| `variantId`       | string | No       | -                                                                                                          | Variant identifier (useful for Shopify integrations)                                             |
 
 ### Brand Color Customization
 
@@ -89,6 +90,7 @@ TryOnWidget.init({
 ```
 
 **How it works:**
+
 - Accepts 6-digit hex colors only (e.g., `#FF5733`, `#1A1A1A`)
 - Automatically generates hover state (+8% lightness) and active state (-8% lightness)
 - If not specified, defaults to an elegant dark theme (`#1a1a1a`)
@@ -96,6 +98,7 @@ TryOnWidget.init({
 ### Platform-Specific Selectors
 
 **Shopify:**
+
 ```javascript
 TryOnWidget.init({
   apiKey: 'your_api_key',
@@ -104,6 +107,7 @@ TryOnWidget.init({
 ```
 
 **WooCommerce:**
+
 ```javascript
 TryOnWidget.init({
   apiKey: 'your_api_key',
@@ -112,6 +116,7 @@ TryOnWidget.init({
 ```
 
 **Custom Setup:**
+
 ```javascript
 TryOnWidget.init({
   apiKey: 'your_api_key',
@@ -142,25 +147,26 @@ X-API-Key: tryonai_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ### Headers
 
-| Header | Required | Description |
-|--------|----------|-------------|
-| `X-API-Key` | **Yes** | Your Wearo API key |
-| `Content-Type` | **Yes** | Must be `application/json` |
-| `Origin` | Conditional | Required if domain whitelist is configured for your API key |
+| Header         | Required    | Description                                                 |
+| -------------- | ----------- | ----------------------------------------------------------- |
+| `X-API-Key`    | **Yes**     | Your Wearo API key                                          |
+| `Content-Type` | **Yes**     | Must be `application/json`                                  |
+| `Origin`       | Conditional | Required if domain whitelist is configured for your API key |
 
 ### Request Body
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `userPhoto` | string | **Yes** | Customer photo - accepts **URL** or **Base64** (see formats below) |
-| `productImageUrl` | string | **Yes** | Public URL of the clothing/product image |
-| `clothingType` | string | No | Clothing category (e.g., "T-shirt", "Dress", "Jacket") |
+| Field             | Type   | Required | Description                                                        |
+| ----------------- | ------ | -------- | ------------------------------------------------------------------ |
+| `userPhoto`       | string | **Yes**  | Customer photo - accepts **URL** or **Base64** (see formats below) |
+| `productImageUrl` | string | **Yes**  | Public URL of the clothing/product image                           |
+| `clothingType`    | string | No       | Clothing category (e.g., "T-shirt", "Dress", "Jacket")             |
 
 ### userPhoto Formats
 
 The `userPhoto` field accepts multiple formats:
 
 **URL (Recommended for server-to-server):**
+
 ```json
 {
   "userPhoto": "https://example.com/customer-photo.jpg",
@@ -169,6 +175,7 @@ The `userPhoto` field accepts multiple formats:
 ```
 
 **Base64 with Data URI prefix:**
+
 ```json
 {
   "userPhoto": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...",
@@ -177,6 +184,7 @@ The `userPhoto` field accepts multiple formats:
 ```
 
 **Base64 raw (without prefix):**
+
 ```json
 {
   "userPhoto": "/9j/4AAQSkZJRgABAQAAAQABAAD...",
@@ -197,12 +205,12 @@ The `userPhoto` field accepts multiple formats:
 }
 ```
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `success` | boolean | Always `true` for successful requests |
-| `tryOnId` | string | Unique identifier for this try-on generation |
-| `resultUrl` | string | Public URL of the generated try-on image (permanent, no expiration) |
-| `creditsRemaining` | number | Your remaining credit balance after this request |
+| Field              | Type    | Description                                                         |
+| ------------------ | ------- | ------------------------------------------------------------------- |
+| `success`          | boolean | Always `true` for successful requests                               |
+| `tryOnId`          | string  | Unique identifier for this try-on generation                        |
+| `resultUrl`        | string  | Public URL of the generated try-on image (permanent, no expiration) |
+| `creditsRemaining` | number  | Your remaining credit balance after this request                    |
 
 ### cURL Example
 
@@ -293,6 +301,7 @@ Our billing system includes automatic refund protection:
 > **If a generation fails due to a technical error, your credit is automatically refunded.**
 
 This covers:
+
 - AI generation failures
 - Image upload errors
 - Network timeouts
@@ -302,11 +311,11 @@ You are only charged for successfully generated images.
 
 ### Account Status
 
-| Status | Plan Credits | PAYG Credits | Action Required |
-|--------|--------------|--------------|-----------------|
-| Active | Available | Available | None |
-| Past Due | Frozen | Available | Update payment method |
-| No Credits | Depleted | Depleted | Purchase credits |
+| Status     | Plan Credits | PAYG Credits | Action Required       |
+| ---------- | ------------ | ------------ | --------------------- |
+| Active     | Available    | Available    | None                  |
+| Past Due   | Frozen       | Available    | Update payment method |
+| No Credits | Depleted     | Depleted     | Purchase credits      |
 
 ---
 
@@ -325,34 +334,33 @@ All error responses follow this format:
 
 ### Error Codes Reference
 
-| HTTP Status | Error Message | Cause | Solution |
-|-------------|---------------|-------|----------|
-| **400** | `userPhoto (base64 or URL) and productImageUrl are required` | Missing required fields | Ensure both `userPhoto` and `productImageUrl` are provided |
-| **400** | `Failed to fetch user photo from URL` | Invalid or inaccessible userPhoto URL | Verify the URL is publicly accessible and returns an image |
-| **400** | `Failed to fetch product image from URL` | Invalid or inaccessible productImageUrl | Verify the URL is publicly accessible and returns an image |
-| **401** | `API key is required. Provide it in the X-API-Key header.` | Missing API key header | Add `X-API-Key` header to your request |
-| **401** | `Invalid API key` | API key not found | Check your API key for typos |
-| **402** | `Insufficient credits. Please purchase more credits.` | No credits remaining | Purchase more credits in your dashboard |
-| **402** | `Payment past due...` | Subscription payment failed | Update your payment method |
-| **403** | `API key is inactive` | API key was deactivated | Contact support or create a new key |
-| **403** | `Domain not authorized for this API key` | Request origin not in whitelist | Add your domain to the API key's allowed domains list |
-| **403** | `Origin header required when domain restrictions are active` | Missing Origin header | Add `Origin` header with your domain |
-| **500** | `AI generation failed` | AI model error | Retry the request; contact support if persistent |
-| **500** | `Failed to save result` | Storage error | Retry the request; contact support if persistent |
-| **500** | `Server configuration error` | Internal server issue | Contact support |
+| HTTP Status | Error Message                                                | Cause                                   | Solution                                                   |
+| ----------- | ------------------------------------------------------------ | --------------------------------------- | ---------------------------------------------------------- |
+| **400**     | `userPhoto (base64 or URL) and productImageUrl are required` | Missing required fields                 | Ensure both `userPhoto` and `productImageUrl` are provided |
+| **400**     | `Failed to fetch user photo from URL`                        | Invalid or inaccessible userPhoto URL   | Verify the URL is publicly accessible and returns an image |
+| **400**     | `Failed to fetch product image from URL`                     | Invalid or inaccessible productImageUrl | Verify the URL is publicly accessible and returns an image |
+| **401**     | `API key is required. Provide it in the X-API-Key header.`   | Missing API key header                  | Add `X-API-Key` header to your request                     |
+| **401**     | `Invalid API key`                                            | API key not found                       | Check your API key for typos                               |
+| **402**     | `Insufficient credits. Please purchase more credits.`        | No credits remaining                    | Purchase more credits in your dashboard                    |
+| **402**     | `Payment past due...`                                        | Subscription payment failed             | Update your payment method                                 |
+| **403**     | `API key is inactive`                                        | API key was deactivated                 | Contact support or create a new key                        |
+| **403**     | `Domain not authorized for this API key`                     | Request origin not in whitelist         | Add your domain to the API key's allowed domains list      |
+| **403**     | `Origin header required when domain restrictions are active` | Missing Origin header                   | Add `Origin` header with your domain                       |
+| **500**     | `AI generation failed`                                       | AI model error                          | Retry the request; contact support if persistent           |
+| **500**     | `Failed to save result`                                      | Storage error                           | Retry the request; contact support if persistent           |
+| **500**     | `Server configuration error`                                 | Internal server issue                   | Contact support                                            |
 
 ### Common Issues
 
 #### Widget button not appearing
 
 1. **Check the product selector:** Open browser DevTools and verify your image matches the selector
+
    ```javascript
    // Test in console
    document.querySelectorAll('img[data-product-image]')
    ```
-
 2. **Image too small:** The widget doesn't inject on images smaller than 150px wide (to avoid cluttering thumbnails)
-
 3. **Check console for errors:** Look for `[TryOnWidget]` messages in the browser console
 
 #### API returns 403 "Domain not authorized"
@@ -373,10 +381,10 @@ If you've configured domain restrictions on your API key:
 
 ## Support
 
-- **Email:** support@wearo.io
+- **Email:** [support@wearo.io](mailto:support@wearo.io)
 - **Documentation:** https://docs.wearo.io
 - **Dashboard:** https://wearo.io/dashboard
 
 ---
 
-*Last updated: February 2026*
+_Last updated: February 2026_
