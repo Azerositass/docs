@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Wearo Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#2E6B42",
+    "light": "#F8F5F1",
+    "dark": "#3A2F2A"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/images/FavIcon.svg",
   "navigation": {
     "tabs": [
       {
@@ -83,15 +83,24 @@
       ]
     }
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
+  "logo": "/images/Logo.svg",
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@wearo.io"
+      },
+      {
+        "label": "Website",
+        "href": "https://wearo.io"
+      },
+      {
+        "label": "Dashboard",
+        "href": "https://wearo.io/dashboard"
+      },
+      {
+        "label": "Get API Key",
+        "href": "https://wearo.io/dashboard"
       }
     ],
     "primary": {
@@ -112,11 +121,22 @@
      "vscode"
    ]
   },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+  "thumbnails": {
+    "background": "/images/OG-visuelpartage.jpg",
+    "appearance": "light"
+  },
+  "description": "Add AI virtual try-on to your e-commerce store in 5 minutes",
+  "background": {
+    "color": {
+      "light": "#2E6B42",
+      "dark": "#F8F5F1"
+    },
+    "decoration": "gradient"
+  },
+  "styling": {
+    "codeblocks": "dark"
+  },
+  "seo": {
+    "indexing": "all"
   }
 }
