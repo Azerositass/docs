@@ -402,6 +402,14 @@ If you've configured domain restrictions on your API key:
 - Ensure good lighting in customer photos
 - Use product images with clean backgrounds
 
+#### Widget button appears below the image or misplaced
+
+Since the widget respects your site's layout and injects the button as a sibling element, this can happen if your image container is larger than the image itself.
+
+**Solutions:**
+1. **CSS Fix:** Add `width: fit-content;` to your product image container.
+2. **Manual Positioning:** You can target the button container `#tryon-trigger-host` in your CSS to adjust its position (e.g., `margin-bottom: 20px;`).
+
 ---
 
 ## Support
